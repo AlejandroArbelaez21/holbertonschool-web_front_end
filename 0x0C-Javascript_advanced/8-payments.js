@@ -1,14 +1,11 @@
 const processPayment = (amount) => {
-    console.log("Collecting payment of ", amount);
+    console.log("Collecting payment of", amount);
 }
 
-const text1 = 'is being processed';
-const text2 = "has been fully processed";
-
 const processOrder = (orderId, amount) => {
-    console.log(orderId, text2);
+    console.log(orderId + " is being processed");
     processPayment(amount)
-    console.log(orderId, text2)
+    console.log(orderId + " has been fully processed")
 }
 
 console.log("Processing orders")
