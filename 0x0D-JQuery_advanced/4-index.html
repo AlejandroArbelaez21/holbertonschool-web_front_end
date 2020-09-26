@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 4</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" 
+         crossorigin="anonymous"></script>
+         <script type="application/javascript">
+            const createFamilyTree = () => {
+                let my_table = $("<table></table>");
+                $("body").append(my_table);
+                let row = $("<tr></tr>");
+                let row2 = $("<tr></tr>");
+                let row3= $("<tr></tr>");
+                let row4 = $("<tr></tr>");
+                $("table").append(row);
+                let th1 = $("<th></th>").text("Firstname");
+                let th2 = $("<th></th>").text("Lastname");
+                $("tr").append(th1, th2);
+                let t_body = $('<tbody></tbody>');
+                $("table").append(t_body);
+                $("table").append(row2);
+                let td1_1 = $("<td></td>").text("Guillaume");
+                let td2_1 = $("<td></td>").text("Salva");
+                $(row2).append(td1_1, td2_1);
+                $("table").append(row3);
+                let td1_2 = $("<td></td>").text("Paulette");
+                let td2_2 = $("<td></td>").text("Salva");
+                $(row3).append(td1_2, td2_2);
+                $("table").append(row4);
+                let td1_3 = $("<td></td>").text("Antoine");
+                let td2_3 = $("<td></td>").text("Salva");
+                $(row4).append(td1_3, td2_3);
+            }
+
+            const replaceFamilyTree = () => {
+                $('tbody').html('<tr><td>Gerard</td><td>Bonissa</td></tr>');
+            }
+            
+            createFamilyTree()
+            replaceFamilyTree()
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

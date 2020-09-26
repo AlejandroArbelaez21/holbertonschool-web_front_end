@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 8</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" 
+         crossorigin="anonymous"></script>
+         <script type="application/javascript">
+            const createSearchForm = () => {
+                $("body").append("<input type='text'><input type='submit'>");
+                $("input:last").click(function() {
+                    queryWikipedia($('input:first').val());
+                });
+                $("body").append("<ul></ul>")
+                $("body").append("<ul id='pagination'></ul>")
+            }
+
+            const addNewArticle = (id, title, snippet) => {
+                $("ul").append("<li><p><span>" + id + " - <b>" + title + "</b></span></p><p>" + snippet + "</p></ul>")
+            }
+
+            const queryWikipedia = (search, offset = 0) => {
+                var url = "https://en.wikipedia.org/w/api.php"; 
+
+                var params = {  
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    format: "json",
+                    sroffset: offset
+                };
+                url = url + '?origin=*';
+
+                Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+                fetch(url)
+                    .then(function(response){return response.json();})
+                    .then(function(response) {
+                        response.query.search.forEach(function({ pageid, title, snippet }) {
+                            addNewArticle(pageid, title, snippet);
+                        })
+                    })
+                    buildPagination(response.query.searchinfo.totalhits, 10, offset);
+            }
+
+            const buildPagination = (numberOfItems, itemsPerPage, currentOffset) => {
+
+                for (let index = 0; index < numberOfItems / itemsPerPage; index++) {
+                    $('#pagination').empty();
+                    $('#pagination').append("<a><li>" + (index + 1) + "</li></a>");
+                    $("li").css({'cursor': 'pointer', 'margin-left': '10px'});
+                    $(currentOffset).css("font-weight", "bold");
+                }
+            }
+            createSearchForm()
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
