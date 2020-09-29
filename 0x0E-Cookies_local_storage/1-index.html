@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" 
+         crossorigin="anonymous"></script>
+         <script type="application/javascript">
+            const setCookies = (exdays) => {
+                let daysExpiration = new Date(
+                Date.now() + 
+                1000 * // second in miliseconds 
+                60 * // Seconds in a minute 
+                60 * // Minute in a hour 
+                24 * // Hour in a day
+                10 // 10 days
+                );
+                let firstname = document.getElementById("firstname").value;
+                document.cookie = `firstname=${firstname}`;
+                let email = document.getElementById('email').value;
+                document.cookie = `email=${email}; expires=${daysExpiration.toGMTString()}`;
+            }
+
+            const showCookies = () => {
+                let paragraph = document.createElement("P");
+                let text = document.createTextNode("Cookies: " + document.cookie);
+                paragraph.appendChild(text);
+                $("body").append(paragraph);
+            }
+
+            const getCookie = (name) => {
+                
+            }
+        </script>
+
+
+    </head>
+
+    <body>
+        <h1>Login to the website</h1>
+        <form>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookies()" style="background-color: white; border-radius: 4px;">Log me in</button>
+        </form>
+        <h1>Cookies</h1>
+        <button onclick="showCookies()" style="background-color: white; border-radius: 4px;">Show the cookies</button>
+    </body>
+
+</html>
