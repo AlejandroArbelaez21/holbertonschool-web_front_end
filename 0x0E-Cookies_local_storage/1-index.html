@@ -7,35 +7,8 @@
         <title>Task 1</title>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
          integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" 
-         crossorigin="anonymous"></script>
-         <script type="application/javascript">
-            const setCookies = (exdays) => {
-                let daysExpiration = new Date(
-                Date.now() + 
-                1000 * // second in miliseconds 
-                60 * // Seconds in a minute 
-                60 * // Minute in a hour 
-                24 * // Hour in a day
-                10 // 10 days
-                );
-                let firstname = document.getElementById("firstname").value;
-                document.cookie = `firstname=${firstname}`;
-                let email = document.getElementById('email').value;
-                document.cookie = `email=${email}; expires=${daysExpiration.toGMTString()}`;
-            }
-
-            const showCookies = () => {
-                let paragraph = document.createElement("P");
-                let text = document.createTextNode("Cookies: " + document.cookie);
-                paragraph.appendChild(text);
-                $("body").append(paragraph);
-            }
-
-            const getCookie = (name) => {
-                
-            }
+         crossorigin="anonymous">
         </script>
-
 
     </head>
 
@@ -49,5 +22,28 @@
         <h1>Cookies</h1>
         <button onclick="showCookies()" style="background-color: white; border-radius: 4px;">Show the cookies</button>
     </body>
+    <script type="application/javascript">
+        const setCookies = (exdays) => {
+            let daysExpiration = new Date(
+            Date.now() + 
+            1000 * // second in miliseconds 
+            60 * // Seconds in a minute 
+            60 * // Minute in a hour 
+            24 * // Hour in a day
+            10 // 10 days
+            );
+            let firstname = document.getElementById("firstname").value;
+            document.cookie = `firstname=${firstname}`;
+            let email = document.getElementById('email').value;
+            document.cookie = `email=${email}; expires=${daysExpiration.toGMTString()}`;
+        }
+
+        const showCookies = () => {
+            let paragraph = document.createElement("P");
+            let text = document.createTextNode("Cookies: " + document.cookie);
+            paragraph.appendChild(text);
+            document.body.appendChild(paragraph);
+        }
+    </script>
 
 </html>
